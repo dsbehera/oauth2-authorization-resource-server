@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     private static final String[] WHITE_LIST_URLS = {
-            "/"
+            "/home"
     };
 
     @Bean
@@ -22,14 +22,13 @@ public class WebSecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .cors()
+        http.cors()
                 .and()
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
                 .antMatchers(WHITE_LIST_URLS).permitAll()
-                .antMatchers("/**").authenticated()
+                .antMatchers("/api/**","/dashboard").authenticated()
                 .and()
                 .oauth2Login(oauth2login ->
                         oauth2login.loginPage("/oauth2/authorization/deepak-client"))

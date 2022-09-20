@@ -16,6 +16,7 @@
     <modules>
         <module>boot-client-app</module>
         <module>oauth-authorization-server</module>
+        <module>oauth2-resource-server</module>
     </modules>
 
 </project>
